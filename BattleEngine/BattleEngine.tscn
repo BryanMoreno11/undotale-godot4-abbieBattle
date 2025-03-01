@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddahfs3p8gwj7"]
+[gd_scene load_steps=28 format=3 uid="uid://ddahfs3p8gwj7"]
 
 [ext_resource type="Script" uid="uid://fsbt25gjknil" path="res://BattleEngine/BattleEngine.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dupa1ccsl1fq0" path="res://BattleEngine/Buttons/spr_fight1.png" id="2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://d1g67r77gf5yi" path="res://BattleEngine/ActingSelector.gd" id="13"]
 [ext_resource type="PackedScene" uid="uid://b4g7m7v1x2n7a" path="res://Shared/Soul/Soul.tscn" id="14"]
 [ext_resource type="Theme" uid="uid://c3fdnmx5to340" path="res://Themes/status.tres" id="14_00jd2"]
+[ext_resource type="Script" uid="uid://clpgytibvimhy" path="res://BattleEngine/Hud.gd" id="14_lxmmi"]
 [ext_resource type="PackedScene" uid="uid://d1nh0b04xs23c" path="res://BattleEngine/Fight_Manager/Revenge Papyrus/Papyrus.tscn" id="15"]
 [ext_resource type="Script" uid="uid://j1l8oqf6dli7" path="res://BattleEngine/Buttons/Node/Buttons.gd" id="16"]
 [ext_resource type="AudioStream" uid="uid://d2qf4pqm1oufh" path="res://BattleEngine/Music/SWRevenge_-_MEGALOVANIA.mp3" id="17"]
@@ -132,6 +133,7 @@ offset_top = 399.673
 offset_right = 608.327
 offset_bottom = 420.673
 grow_horizontal = 2
+script = ExtResource("14_lxmmi")
 
 [node name="Name" type="RichTextLabel" parent="HUD"]
 custom_minimum_size = Vector2(113, 0)

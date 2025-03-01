@@ -6,18 +6,17 @@ var list = []
 var selection = 0
 var input = Vector2.ZERO
 
-var enable = false
+var enabled = false
 var list_increase = Vector2.ZERO
 
 signal select
-signal exit
 
 func enable():
 	connect("select", Callable(self, "select"))
-	enable = true
+	enabled = true
 
-func _process(delta):
-	if enable:
+func _process(_delta):
+	if enabled:
 		input.x = (int(Input.is_action_just_pressed("ui_right")) - int(Input.is_action_just_pressed("ui_left"))) * list_increase.x
 		input.y = (int(Input.is_action_just_pressed("ui_down")) - int(Input.is_action_just_pressed("ui_up"))) * list_increase.y
 
@@ -29,7 +28,7 @@ func _process(delta):
 
 func disable():
 	disconnect("select", Callable(self, "select"))
-	enable = false
+	enabled = false
 
-func select():
+func getSelection():
 	return list[selection]

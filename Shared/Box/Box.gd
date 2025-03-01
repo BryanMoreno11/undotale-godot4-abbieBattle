@@ -3,15 +3,13 @@ extends Control
 @export var border = 5
 
 @onready var attacks = $Attacks
-@onready var resize_tween := $Resize
-@onready var pos_tween = $Positioning
 @onready var shapes = $Collisions
 
 func _ready():
 	#resize(Vector2(100,100), 0)
 	pass
 
-func _process(delta):
+func _process(_delta):
 	update_size()
 
 func update_size():

@@ -7,6 +7,6 @@ func _ready():
 	position.x = -($Label.size.x / 2.0) + global_position.x
 	$AnimationPlayer.play("jump")
 
-func _on_animation_finished(anim_name):
+func _on_animation_finished(_anim_name):
 	$AnimationPlayer.stop()
 	queue_free()

@@ -2,7 +2,7 @@ extends Node2D
 
 var stopped : bool = false
 
-signal slaughter
+signal slaughter(intensity: float)
 signal enemys_turn
 
 func _ready():
@@ -16,7 +16,7 @@ func _process(delta):
 
 func hit():
 	stopped = true
-	emit_signal("slaughter")
+	slaughter.emit(float(0.3 + 0.7 / max(1, abs($Bar.position.x) / 25.))) # to improve ...
 	$Bar.play()
 	await get_tree().create_timer(2).timeout
 	disappear()
@@ -26,6 +26,6 @@ func disappear():
 	$Bar.queue_free()
 	$AnimationPlayer.play("Out")
 
-func _on_animation_finished(anim_name):
+func _on_animation_finished(_anim_name):
 	if get_node_or_null("Bar") == null:
 		queue_free()

@@ -5,7 +5,7 @@ var selection = 0
 
 var enabled = false
 
-var positionArray = [ [Vector2(80,285), Vector2(320,285)], [Vector2(80,315), Vector2(320,315)]]
+var positionArray = [[Vector2(80, 285), Vector2(320, 285)], [Vector2(80, 315), Vector2(320, 315)]]
 var soul
 var blitter
 
@@ -19,7 +19,6 @@ var list = []
 signal select
 
 func enable(_soul, _blitter):
-	
 	self.blitter = _blitter
 	self.soul = _soul
 	
@@ -33,8 +32,8 @@ func enable(_soul, _blitter):
 func string():
 	var _string = ""
 	
-	var row_one = list[0].slice(2 * page, (2 * page) + 1, 1)
-	var row_two = list[1].slice(2 * page, (2 * page) + 1, 1)
+	var row_one = list[0].slice(2 * page, (2 * page) + 2, 1)
+	var row_two = list[1].slice(2 * page, (2 * page) + 2, 1)
 	
 	var both = []
 	
@@ -46,7 +45,7 @@ func string():
 	for index in range(both.size()):
 		var option = both[index]
 		if index % 2 == 1:
-			for spaces in range(14 - len(both[index-1])):
+			for spaces in range(14 - len(both[index - 1])):
 				_string += " "
 			_string += "* " + option + "\n"
 			lines += 1
@@ -56,7 +55,7 @@ func string():
 	for line in range(2 - lines):
 		_string += "\n"
 	
-	_string += "[right]PAGE "+ str(page + 1) +"[/right]"
+	_string += "[right]PAGE " + str(page + 1) + "[/right]"
 	return _string
 
 func rows(paralist, reverse = false):
@@ -72,7 +71,7 @@ func rows(paralist, reverse = false):
 	var page_num = ceil(copylist.size() / 4.0)
 	page_max = page_num
 	
-	new_list.append_array([[],[]])
+	new_list.append_array([[], []])
 	
 	for _page in range(page_num):
 		for index in range(clamp(2, 1, copylist.size())):
@@ -82,7 +81,7 @@ func rows(paralist, reverse = false):
 	
 	return new_list
 
-func _process(delta):
+func _process(_delta):
 	if enabled:
 		input.x = int(Input.is_action_just_pressed("ui_right")) - int(Input.is_action_just_pressed("ui_left"))
 		input.y = (int(Input.is_action_just_pressed("ui_down")) - int(Input.is_action_just_pressed("ui_up")))

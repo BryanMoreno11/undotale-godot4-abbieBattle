@@ -23,7 +23,6 @@ signal shake_camera
 func _ready():
 	shake_camera.connect(_on_shake_camera) # connect("shake_camera", Callable(self, "shake_camera"))
 	$Music.play(10)
-	$HUD/Name.text = Data.human
 	playersTurn()
 
 func playersTurn(reset_line = true):
@@ -95,20 +94,19 @@ func target():
 			blitter.feed(["", null, null, true])
 			enemysTurn()
 
-func slay():
+func slay(intensity: float):
 	var slice = Slice.instantiate()
 	slice.position = selection.position
 	add_child(slice)
 	await get_tree().create_timer(1).timeout
-	
-	var damage = Damage.instantiate()
-	damage.position = selection.position
+	print(intensity)
+	var damageLabel := Damage.instantiate()
+	damageLabel.position = selection.position
 	selection.shake(15)
-	damage.get_node("Label").text = str(selection.DEF)
+	var damage := int((Data.atk - selection.DEF / 5) * intensity)
+	damageLabel.get_node("Label").text = str(damage)
 	
-	add_child(damage)
-	
-	print(damage.rotation)
+	add_child(damageLabel)
 
 func enemysTurn():
 	fightManager.cutscene(box)
