@@ -1,84 +1,153 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://dhpr5mcrut75v"]
 
-[ext_resource path="res://BattleEngine/DamageMeter/Text/Damage.gd" type="Script" id=1]
-[ext_resource path="res://Shared/Text/Clicks/Files/snd_damage.wav" type="AudioStream" id=2]
-[ext_resource path="res://Fonts/hachicro.TTF" type="FontFile" id=3]
+[ext_resource type="Script" uid="uid://bjd564mnt5jrt" path="res://BattleEngine/DamageMeter/Text/Damage.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://cmn88o144u3pa" path="res://Shared/Text/Clicks/Files/snd_damage.wav" id="2"]
+[ext_resource type="FontFile" uid="uid://cxqas3qo0g3at" path="res://Fonts/hachicro.TTF" id="3"]
 
-[sub_resource type="FontFile" id=1]
-size = 1
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("3")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/49/0/ascent = 0.0
+cache/0/49/0/descent = 0.0
+cache/0/49/0/underline_position = 0.0
+cache/0/49/0/underline_thickness = 0.0
+cache/0/49/0/scale = 1.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "jump"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.3, 0.9 ),
-"transitions": PackedFloat32Array( 0.217638, 7.91704, 1 ),
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(0.217638, 7.91704, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 100 ) ]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 100)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Label:theme_override_fonts/font:size")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Label:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.3, 0.9, 1 ),
-"transitions": PackedFloat32Array( 1, 0.435275, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 1, 32, 50, 50, 1 ]
+"values": [0.0, 0.0, 0.174533]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Label:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.7, 0.9 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 0.0, 0.0, 10.0 ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath(".:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
+tracks/3/path = NodePath("Label:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.6, 0.9 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.9),
+"transitions": PackedFloat32Array(1, 0.435275, 1e+06, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.64, 0.64), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h23lf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h23lf"]
+_data = {
+&"RESET": SubResource("Animation_h23lf"),
+&"jump": SubResource("2")
 }
 
 [node name="Damage" type="Node2D"]
-script = ExtResource( 1 )
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1")
 
 [node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 100.0
 offset_right = 238.0
-offset_bottom = 51.0
-theme_override_fonts/font = SubResource( 1 )
-theme_override_colors/font_color = Color( 0.780392, 0.780392, 0.780392, 1 )
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.174533
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(119, 25)
+theme_override_colors/font_color = Color(0.780392, 0.780392, 0.780392, 1)
+theme_override_fonts/font = SubResource("1")
 text = "Hello!"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/jump = SubResource( 2 )
+libraries = {
+&"": SubResource("AnimationLibrary_h23lf")
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource("2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

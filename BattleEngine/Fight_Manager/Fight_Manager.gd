@@ -4,10 +4,10 @@ extends Node2D
 var input
 var selection = 0
 
-var enabled = false # was "enable"
+var enabled = false
 
-var possiblePositions = [285,315,350]
-var positionArray = []
+var possiblePositions := [285,315,350]
+var positionArray := []
 var soul
 
 var children = []
@@ -17,13 +17,13 @@ var children = []
 signal select
 signal cutscene_end
 
-func cutscene(arg): # ether: to be overloaded?
+func cutscene(_arg): # to be overloaded
 	pass
 
 func _ready():
 	cutscene_end.connect(get_selection) # connect("cutscene_end", Callable(self, "selection"))
 
-func _process(delta):
+func _process(_delta):
 	if enabled:
 		input = int(Input.is_action_just_pressed("ui_down")) - int(Input.is_action_just_pressed("ui_up"))
 		
@@ -47,7 +47,7 @@ func enable(_soul):
 		if !child.spared:
 			children.append(child)
 
-	positionArray = possiblePositions.slice(0, children.size() - 1)
+	positionArray = possiblePositions.slice(0, children.size())
 	self.soul = _soul
 	connect("select", Callable(self, "disable"))
 	await get_tree().create_timer(0.1).timeout

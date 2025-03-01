@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://c3ix1qocvt5wy"]
 
-[ext_resource path="res://Shared/Soul/Ghost.gd" type="Script" id=1]
-[ext_resource path="res://Shared/Soul/soul.png" type="Texture2D" id=2]
+[ext_resource type="Script" uid="uid://cpjpsfkstct70" path="res://Shared/Soul/Ghost.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c78atbwwrod36" path="res://Shared/Soul/soul.png" id="2"]
 
 [node name="Ghost" type="Sprite2D"]
-texture = ExtResource( 2 )
-script = ExtResource( 1 )
+texture = ExtResource("2")
+script = ExtResource("1")

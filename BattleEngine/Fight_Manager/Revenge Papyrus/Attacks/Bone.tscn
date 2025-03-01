@@ -1,25 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://d1haa7ptfog42"]
 
-[ext_resource path="res://BattleEngine/Fight_Manager/Revenge Papyrus/Attacks/BoneTest.png" type="Texture2D" id=1]
-[ext_resource path="res://BattleEngine/Fight_Manager/Revenge Papyrus/Attacks/Bone.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://bjtromvjwevae" path="res://BattleEngine/Fight_Manager/Revenge Papyrus/Attacks/BoneTest.png" id="1"]
+[ext_resource type="Script" uid="uid://3rt472tpqj5r" path="res://BattleEngine/Fight_Manager/Revenge Papyrus/Attacks/Bone.gd" id="2"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2.5, 2.5 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(5, 5)
 
-[node name="Bone" type="CharacterBody2D" groups=[
-"damage",
-]]
+[node name="Bone" type="CharacterBody2D" groups=["damage"]]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="Bone" type="NinePatchRect" parent="."]
 offset_right = 13.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 13, 11 )
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 13, 11)
 patch_margin_top = 5
 patch_margin_bottom = 6
 __meta__ = {
@@ -27,12 +25,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 6.5, 0 )
-shape = SubResource( 1 )
+position = Vector2(6.5, 0)
+shape = SubResource("1")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2( 4.79221, 4.6929 )
-scale = Vector2( 0.51735, 1 )
-rect = Rect2( -10, -10, 26.5, 20 )
+position = Vector2(4.79221, 4.6929)
+scale = Vector2(0.51735, 1)
+rect = Rect2(-10, -10, 26.5, 20)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

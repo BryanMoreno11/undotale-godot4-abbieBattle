@@ -7,7 +7,7 @@ extends Fight_Manager
 var cutscene_counter = 0
 var box
 
-func cutscene(varbox : Control): #YOU CAN CHOOSE WHAT PARAMETERS TO PASS IN
+func cutscene(varbox: Control): #YOU CAN CHOOSE WHAT PARAMETERS TO PASS IN
 	box = varbox
 	soul.position = varbox.position + (varbox.size / 2)
 	soul.changeMovement("still")

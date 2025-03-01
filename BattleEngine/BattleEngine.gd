@@ -1,19 +1,19 @@
 extends Node2D
 
-@onready var Attacker = preload("res://BattleEngine/DamageMeter/DamageMeter.tscn")
-@onready var Slice = preload("res://BattleEngine/Weapon/Weapon.tscn")
-@onready var Damage = preload("res://BattleEngine/DamageMeter/Text/Damage.tscn")
+@onready var Attacker := preload("res://BattleEngine/DamageMeter/DamageMeter.tscn")
+@onready var Slice := preload("res://BattleEngine/Weapon/Weapon.tscn")
+@onready var Damage := preload("res://BattleEngine/DamageMeter/Text/Damage.tscn")
 
-@onready var box = $Box
-@onready var global_attacks = $Attacks
-@onready var attacks = $Box/Attacks
-@onready var blitter = $Box/Blitter
-@onready var enemies = $Enemies
-@onready var soul = $Soul
+@onready var box := $Box
+@onready var global_attacks := $Attacks
+@onready var attacks := $Box/Attacks
+@onready var blitter := $Box/Blitter
+@onready var fightManager := $Enemies
+@onready var soul := $Soul
 
-@onready var buttons = $Buttons
-@onready var acting = $ActingSelector
-@onready var items = $ItemSelector
+@onready var buttons := $Buttons
+@onready var acting := $ActingSelector
+@onready var items := $ItemSelector
 
 var selection
 var function
@@ -25,9 +25,6 @@ func _ready():
 	$Music.play(10)
 	$HUD/Name.text = Data.human
 	playersTurn()
-
-func _process(delta):
-	pass
 
 func playersTurn(reset_line = true):
 	if reset_line:
@@ -52,13 +49,13 @@ func playersTurn(reset_line = true):
 				return
 
 func target():
-	enemies.enable(soul)
-	blitter.feed([enemies.string(), null, null, true])
-	await enemies.select
-	selection = enemies.get_selection()
+	fightManager.enable(soul)
+	blitter.feed([fightManager.string(), null, null, true])
+	await fightManager.select
+	selection = fightManager.get_selection()
 	
-	if enemies.enable:
-		enemies.enable = false
+	if fightManager.enabled:
+		fightManager.enabled = false
 		playersTurn()
 		return
 	
@@ -83,8 +80,8 @@ func target():
 			acting.enable(soul)
 			await acting.select
 			
-			if acting.enable:
-				acting.enable = false
+			if acting.enabled:
+				acting.enabled = false
 				target()
 				return
 			
@@ -107,18 +104,18 @@ func slay():
 	var damage = Damage.instantiate()
 	damage.position = selection.position
 	selection.shake(15)
-	damage.get_node("Label").text = String(selection.DEF)
+	damage.get_node("Label").text = str(selection.DEF)
 	
 	add_child(damage)
 	
 	print(damage.rotation)
 
 func enemysTurn():
-	enemies.cutscene(box)
-	await enemies.cutscene_end
+	fightManager.cutscene(box)
+	await fightManager.cutscene_end
 	
-	enemies.attack()
-	await enemies.cutscene_end
+	fightManager.attack()
+	await fightManager.cutscene_end
 	
 	soul.changeMovement("")
 	playersTurn()
@@ -129,12 +126,12 @@ var random = [-1, 1]
 func _on_shake_camera(amount = 5):
 	if store_amnt == 0:
 		store_amnt = (amount/100.0) + 0.01
-	var offset_sign = Vector2((int($Camera3D.offset.x >= 0) * 2) - 1,(int($Camera3D.offset.y >= 0) * 2) - 1)
-	$Camera3D.offset = Vector2 (-(amount * offset_sign.x),random[randi() % random.size()] * (amount * offset_sign.y))
+	var offset_sign = Vector2((int($Camera2D.offset.x >= 0) * 2) - 1,(int($Camera2D.offset.y >= 0) * 2) - 1)
+	$Camera2D.offset = Vector2 (-(amount * offset_sign.x),random[randi() % random.size()] * (amount * offset_sign.y))
 	amount -= 1
 	var test = amount/100.0
 	await get_tree().create_timer(store_amnt - test).timeout
 	if amount != 0:
-		_on_shake_camera(amount) # ether: idk if this is calling the signal or the function itself
+		_on_shake_camera(amount)
 	else:
 		store_amnt = 0
