@@ -16,7 +16,8 @@ func _process(delta):
 
 func hit():
 	stopped = true
-	slaughter.emit(float(0.3 + 0.7 / max(1, abs($Bar.position.x) / 25.))) # to improve ...
+	var intensity := float(0.2 + 0.8 * pow(1 - abs($Bar.position.x / 280.), 2))
+	slaughter.emit(intensity)
 	$Bar.play()
 	await get_tree().create_timer(2).timeout
 	disappear()

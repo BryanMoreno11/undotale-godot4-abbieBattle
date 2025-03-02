@@ -7,9 +7,9 @@ var hp := maxhp
 var items := ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"]
 
 var weapon := "Real Knife"
-var armor := "Something"
+var armor := "Old Tutu"
 var atk := 20
-var def := 5
+var def := 10
 
 func read():
 	pass

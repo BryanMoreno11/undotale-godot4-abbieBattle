@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var damage = 50
+@export var damage = 15
 
 var from = ""
 var motion = Vector2(0,0)

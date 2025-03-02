@@ -2,7 +2,7 @@ extends Node2D
 
 @export var NAME = "Papyrus"
 
-var ATK = 10
+var ATK = 15
 var DEF = 30
 
 var check_line = "He is just a test monster after all"

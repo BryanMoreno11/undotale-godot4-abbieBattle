@@ -102,10 +102,10 @@ func slay(intensity: float):
 	print(intensity)
 	var damageLabel := Damage.instantiate()
 	damageLabel.position = selection.position
-	selection.shake(15)
-	var damage := int((Data.atk - selection.DEF / 5) * intensity)
+	var damage := int(max((Data.atk - selection.DEF / 5.) * intensity, 0))
+	selection.HP -= damage
+	if (damage > 0): selection.shake(15)
 	damageLabel.get_node("Label").text = str(damage)
-	
 	add_child(damageLabel)
 
 func enemysTurn():

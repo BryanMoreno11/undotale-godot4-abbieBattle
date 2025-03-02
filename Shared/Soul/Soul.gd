@@ -85,6 +85,7 @@ func _on_body_entered(body):
 		body.queue_free()
 
 func hit(damage = 0):
-	Data.hp -= damage
-	$Hurt.play()
-	main_scene.emit_signal("shake_camera")
+	Data.hp -= int(max(damage - Data.def / 5., 0))
+	if (damage > 0):
+		$Hurt.play()
+		main_scene.emit_signal("shake_camera")
