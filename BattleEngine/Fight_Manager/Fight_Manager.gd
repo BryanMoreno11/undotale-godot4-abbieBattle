@@ -6,9 +6,9 @@ var selection = 0
 
 var enabled = false
 
-var possiblePositions := [285,315,350]
+var possiblePositions := [285, 315, 350]
 var positionArray := []
-var soul
+@export var soul: PlayerSoul
 
 var children = []
 
@@ -22,6 +22,9 @@ func cutscene(_arg): # to be overloaded
 
 func _ready():
 	cutscene_end.connect(get_selection) # connect("cutscene_end", Callable(self, "selection"))
+	for child in get_children():
+		if !child.spared:
+			children.append(child)
 
 func _process(_delta):
 	if enabled:
@@ -36,19 +39,13 @@ func _process(_delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			self.enabled = false
 			get_parent().get_node("Select").play()
-			select.emit() # emit_signal("select")
+			select.emit()
 		elif Input.is_action_just_pressed("ui_cancel"):
 			get_parent().get_node("Squeak").play()
-			select.emit() # emit_signal("select")
+			select.emit()
 
-func enable(_soul):
-	children.clear()
-	for child in get_children():
-		if !child.spared:
-			children.append(child)
-
+func enable():
 	positionArray = possiblePositions.slice(0, children.size())
-	self.soul = _soul
 	connect("select", Callable(self, "disable"))
 	await get_tree().create_timer(0.1).timeout
 	self.enabled = true

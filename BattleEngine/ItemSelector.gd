@@ -16,14 +16,14 @@ var second_row = false
 
 var list = []
 
-signal select
+signal select(index: int)
 
 func enable(_soul, _blitter):
-	self.blitter = _blitter
 	self.soul = _soul
+	self.blitter = _blitter
 	
 	list = rows(Data.items)
-	blitter.feed(string(), false) # ether: should this be blitter or _blitter?
+	blitter.feed(string(), false)
 	
 	select.connect(disable) # connect("select", Callable(self, "disable"))
 	await get_tree().create_timer(0.1).timeout
@@ -43,9 +43,9 @@ func string():
 	var lines = 0
 	
 	for index in range(both.size()):
-		var option = both[index]
+		var option = both[index].item_name
 		if index % 2 == 1:
-			for spaces in range(14 - len(both[index - 1])):
+			for spaces in range(14 - len(both[index - 1].item_name)):
 				_string += " "
 			_string += "* " + option + "\n"
 			lines += 1
@@ -105,16 +105,17 @@ func _process(_delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			self.enabled = false
 			get_parent().get_node("Select").play()
-			select.emit() # emit_signal("select")
+			select.emit(selection * 2 - (1 if selection % 2 != 0 else 0) + (2 if second_row else 0))
 		elif Input.is_action_just_pressed("ui_cancel"):
+			self.enabled = false
 			get_parent().get_node("Squeak").play()
-			select.emit() # emit_signal("select")
+			select.emit(-1)
 
-func disable():
-	select.disconnect(disable) # disconnect("select", Callable(self, "disable"))
+func disable(_index: int):
+	select.disconnect(disable)
 
 func get_selection(): # was "selection"
 	return list[int(second_row)][selection]
-	
+
 func cutscene():
 	pass

@@ -12,8 +12,8 @@ extends Node2D
 @onready var soul := $Soul
 
 @onready var buttons := $Buttons
-@onready var acting := $ActingSelector
-@onready var items := $ItemSelector
+@onready var actingSelector := $ActingSelector
+@onready var itemSelector := $ItemSelector
 
 var selection
 var function
@@ -21,7 +21,7 @@ var function
 signal shake_camera
 
 func _ready():
-	shake_camera.connect(_on_shake_camera) # connect("shake_camera", Callable(self, "shake_camera"))
+	shake_camera.connect(_on_shake_camera)
 	$Music.play(10)
 	playersTurn()
 
@@ -30,28 +30,16 @@ func playersTurn(reset_line = true):
 		blitter.feed("* You feel puzzled.")
 	buttons.enable(soul)
 	await buttons.select
-	#blitter.feed("")
-	
+	buttons.turn_off()
 	function = buttons.get_selection()
-	match function:
-		"Fight", "Act", "Mercy":
-			target()
-		"Item":
-			if Data.items.is_empty():
-				playersTurn(false)
-				return
-			items.enable(soul, blitter)
-			await items.select
-			if items.enabled:
-				items.enabled = false
-				playersTurn()
-				return
+	target()
 
 func target():
-	fightManager.enable(soul)
-	blitter.feed(fightManager.string(), false)
-	await fightManager.select
-	selection = fightManager.get_selection()
+	if function != "Item":
+		fightManager.enable()
+		blitter.feed(fightManager.string(), false)
+		await fightManager.select
+		selection = fightManager.get_selection()
 	
 	if fightManager.enabled:
 		fightManager.enabled = false
@@ -60,7 +48,6 @@ func target():
 	
 	match function:
 		"Fight":
-			buttons.turn_off()
 			soul.position = Vector2(-10,-10)
 			
 			var attacker := Attacker.instantiate()
@@ -74,29 +61,44 @@ func target():
 			
 			print(attacker.rotation)
 		"Act":
-			acting.list = selection.actings
-			blitter.feed(acting.string(), false)
-			acting.enable(soul)
-			await acting.select
+			actingSelector.list = selection.actings
+			blitter.feed(actingSelector.string(), false)
+			actingSelector.enable(soul)
+			await actingSelector.select
 			
-			if acting.enabled:
-				acting.enabled = false
+			if actingSelector.enabled:
+				actingSelector.enabled = false
 				target()
 				return
 			
-			buttons.turn_off()
 			soul.visible = false
-			var actString = selection.acting(acting.selection)
+			var actString = selection.actingSelector(actingSelector.selection)
 			blitter.feed("* " + actString)
 			await blitter.next
 			soul.visible = true
 			enemysTurn()
 		"Mercy":
-			buttons.turn_off()
 			if selection.spareable:
 				selection.spare()
-			blitter.feed()
 			enemysTurn()
+		"Item":
+			if Data.items.is_empty():
+				playersTurn(false)
+				return
+			itemSelector.enable(soul, blitter)
+			var selectionIndex = await itemSelector.select
+			if selectionIndex < 0:
+				playersTurn()
+			else:
+				soul.visible = false
+				var item = Data.items[selectionIndex] as Item
+				add_child(item)
+				var text = item.use()
+				blitter.feed("* " + text, false)
+				await blitter.next
+				item.queue_free()
+				Data.items.remove_at(selectionIndex)
+				enemysTurn()
 
 func slay(intensity: float):
 	var slice := Slice.instantiate()
@@ -112,6 +114,8 @@ func slay(intensity: float):
 	add_child(damageLabel)
 
 func enemysTurn():
+	soul.visible = true
+	blitter.feed()
 	fightManager.cutscene(box)
 	await fightManager.cutscene_end
 	

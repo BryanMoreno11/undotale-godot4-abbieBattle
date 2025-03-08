@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name PlayerSoul extends CharacterBody2D
 
 @onready var ghost = preload("res://Shared/Soul/Ghost.tscn")
 
@@ -84,7 +84,8 @@ func _on_body_entered(body):
 		body.queue_free()
 
 func hit(damage = 0):
-	Data.hp -= int(max(damage - Data.def / 5., 0))
+	var finalDamage := int(max(damage - Data.def / 5., 0))
+	Data.hp = max(Data.hp - finalDamage, 0)
 	if (damage > 0):
 		$Hurt.play()
 		main_scene.emit_signal("shake_camera")

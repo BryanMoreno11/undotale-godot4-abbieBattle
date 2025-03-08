@@ -3,7 +3,7 @@ extends RichTextLabel
 @onready var click_node = $Click
 
 var dataText := ""
-var animation := true
+var animated := true
 var pause := 0.035
 var longPausesIndexes := []
 var longPause := 0.5
@@ -33,13 +33,13 @@ func freeze():
 	ongoing = false
 	visible_characters = len(dataText)
 
-func feed(_dataText = "", _animation = true, _pause = 0.035, _longPausesIndexes = [], _longPause = 0.5):
+func feed(_dataText = "", _animated = true, _pause = 0.035, _longPausesIndexes = [], _longPause = 0.5):
 	ongoing = true
 	
 	timer.stop()
 	
 	dataText = _dataText
-	animation = _animation
+	animated = _animated
 	pause = _pause
 	longPausesIndexes = _longPausesIndexes
 	longPause = _longPause
@@ -49,8 +49,9 @@ func feed(_dataText = "", _animation = true, _pause = 0.035, _longPausesIndexes 
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	if !animation:
+	if !animated:
 		visible_characters = len(dataText)
+		ongoing = false
 		return
 
 	nextChar()

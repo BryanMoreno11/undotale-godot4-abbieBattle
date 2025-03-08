@@ -91,11 +91,14 @@ cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 [node name="BattleEngine" type="Node2D"]
 script = ExtResource("1")
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="." node_paths=PackedStringArray("soul")]
 script = ExtResource("10")
+soul = NodePath("../Soul")
 
 [node name="Papyrus" parent="Enemies" instance=ExtResource("15")]
 position = Vector2(316.967, 123.659)
+NAME = "Monster"
+spareable = true
 
 [node name="Box" parent="." instance=ExtResource("11")]
 offset_left = 32.0

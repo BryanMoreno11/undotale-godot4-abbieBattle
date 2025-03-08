@@ -35,10 +35,10 @@ func _process(_delta):
 		if Input.is_action_just_pressed("ui_accept"):
 			self.enabled = false
 			get_parent().get_node("Select").play()
-			select.emit() #emit_signal("select")
+			select.emit()
 		elif Input.is_action_just_pressed("ui_cancel"):
 			get_parent().get_node("Squeak").play()
-			select.emit() #emit_signal("select")
+			select.emit()
 
 func string():
 	var _string = ""

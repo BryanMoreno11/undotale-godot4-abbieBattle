@@ -4,8 +4,15 @@ var human := "PLAYER"
 var lv := 20
 var maxhp := 90
 var hp := maxhp
-var items := ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8"]
-
+var items := [
+	HealingItem.new("Monster Candy", 10),
+	HealingItem.new("Monster Candy", 10),
+	HealingItem.new("Spider Donut", 12),
+	HealingItem.new("Spider Donut", 12),
+	HealingItem.new("Spider Cider", 24),
+	HealingItem.new("Spider Cider", 24),
+	HealingItem.new("Butterscotch Pie", 999),
+]
 var weapon := "Real Knife"
 var armor := "Old Tutu"
 var atk := 20

@@ -27,8 +27,7 @@ func attack():
 		bone.motion = Vector2(100,0)
 		bone.switch_from("bot")
 		box.attacks.add_child(bone)
-		var mode = randi_range(0, 1) * 200
-		bone.global_position = box.global_position + Vector2(-30, box.size.y - 16 + mode)
+		bone.global_position = box.global_position + Vector2(-30, box.size.y - 16)
 		bone.visual.size.y = 30
 		await get_tree().create_timer(1).timeout
 	box_adopts(soul, get_parent())
