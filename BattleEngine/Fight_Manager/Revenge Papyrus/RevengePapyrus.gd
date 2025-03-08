@@ -14,21 +14,21 @@ func cutscene(varbox: Control): #YOU CAN CHOOSE WHAT PARAMETERS TO PASS IN
 	match cutscene_counter:
 		0:
 			varbox.resize(Vector2(300,140), null, 1, 1, 1.5)
-			$Papyrus.bubble(["NYEH HEH HEH!! FUCK OFF, HUMANO"])
+			$Papyrus.bubble("NYEH HEH HEH!! FUCK OFF, HUMANO")
 			await $Papyrus.blitter.next
 			$Papyrus/Bubble.visible = false
 	
 	emit_signal("cutscene_end")
 	
 func attack():
-	soul.changeMovement("red")
 	soul.changeMovement("blue")
 	for i in range(3):
 		var bone = bone_tscn.instantiate()
 		bone.motion = Vector2(100,0)
 		bone.switch_from("bot")
 		box.attacks.add_child(bone)
-		bone.global_position = box.global_position + Vector2(-30, box.size.y - 16)
+		var mode = randi_range(0, 1) * 200
+		bone.global_position = box.global_position + Vector2(-30, box.size.y - 16 + mode)
 		bone.visual.size.y = 30
 		await get_tree().create_timer(1).timeout
 	box_adopts(soul, get_parent())

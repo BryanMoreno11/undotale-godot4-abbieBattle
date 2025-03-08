@@ -2,7 +2,12 @@ extends RichTextLabel
 
 @onready var click_node = $Click
 
-var line = ["Test! One two three, one two three", [-1], [0.035, 0.5], false]
+var dataText := ""
+var animation := true
+var pause := 0.035
+var longPausesIndexes := []
+var longPause := 0.5
+
 var click = preload("res://Shared/Text/Clicks/Files/generic2.wav")
 
 var ongoing = false
@@ -16,7 +21,7 @@ func _ready():
 	next.connect(_on_next)
 	click_node.stream = click
 
-func _process(delta):
+func _process(_delta):
 	if skippable:
 		if Input.is_action_just_pressed("ui_accept") and !ongoing:
 			emit_signal("next")
@@ -26,36 +31,38 @@ func _process(delta):
 func freeze():
 	timer.stop()
 	ongoing = false
-	visible_characters = len(line[0])
+	visible_characters = len(dataText)
 
-func feed(args = [""]):
-	
+func feed(_dataText = "", _animation = true, _pause = 0.035, _longPausesIndexes = [], _longPause = 0.5):
 	ongoing = true
 	
 	timer.stop()
 	
-	for index in range(args.size()):
-		if args[index] != null:
-			line[index] = args[index]
+	dataText = _dataText
+	animation = _animation
+	pause = _pause
+	longPausesIndexes = _longPausesIndexes
+	longPause = _longPause
 
-	text = ""
+	text = dataText
 	visible_characters = 0
 	
-	text = line[0]
 	await get_tree().create_timer(0.1).timeout
 	
-	if line[3]:
-		visible_characters = len(line[0])
+	if !animation:
+		visible_characters = len(dataText)
 		return
 
 	nextChar()
 
 func nextChar():
-	if visible_characters < len(line[0]):
+	if visible_characters < len(dataText):
 		visible_characters += 1
 		click_node.play()
-		var check = int(visible_characters in line[1])
-		timer.start(line[2][check])
+		if visible_characters in longPausesIndexes:
+			timer.start(longPause)
+		else:
+			timer.start(pause)
 	else:
 		ongoing = false
 

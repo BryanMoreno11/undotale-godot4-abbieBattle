@@ -27,10 +27,10 @@ func _ready():
 
 func playersTurn(reset_line = true):
 	if reset_line:
-		blitter.feed(["* You feel puzzled.", [22], null, false])
+		blitter.feed("* You feel puzzled.")
 	buttons.enable(soul)
 	await buttons.select
-	#blitter.feed(["", null, null, true])
+	#blitter.feed("")
 	
 	function = buttons.get_selection()
 	match function:
@@ -49,7 +49,7 @@ func playersTurn(reset_line = true):
 
 func target():
 	fightManager.enable(soul)
-	blitter.feed([fightManager.string(), null, null, true])
+	blitter.feed(fightManager.string(), false)
 	await fightManager.select
 	selection = fightManager.get_selection()
 	
@@ -63,7 +63,7 @@ func target():
 			buttons.turn_off()
 			soul.position = Vector2(-10,-10)
 			
-			var attacker = Attacker.instantiate()
+			var attacker := Attacker.instantiate()
 			attacker.position = box.position + (box.size / 2)
 			attacker.connect("slaughter", Callable(self, "slay"))
 			attacker.connect("enemys_turn", Callable(self, "enemysTurn"))
@@ -75,7 +75,7 @@ func target():
 			print(attacker.rotation)
 		"Act":
 			acting.list = selection.actings
-			blitter.feed([acting.string(), null, null, true])
+			blitter.feed(acting.string(), false)
 			acting.enable(soul)
 			await acting.select
 			
@@ -85,21 +85,24 @@ func target():
 				return
 			
 			buttons.turn_off()
-			var get_act_string = selection.acting(acting.selection)
-			
+			soul.visible = false
+			var actString = selection.acting(acting.selection)
+			blitter.feed("* " + actString)
+			await blitter.next
+			soul.visible = true
+			enemysTurn()
 		"Mercy":
 			buttons.turn_off()
 			if selection.spareable:
 				selection.spare()
-			blitter.feed(["", null, null, true])
+			blitter.feed()
 			enemysTurn()
 
 func slay(intensity: float):
-	var slice = Slice.instantiate()
+	var slice := Slice.instantiate()
 	slice.position = selection.position
 	add_child(slice)
 	await get_tree().create_timer(1).timeout
-	print(intensity)
 	var damageLabel := Damage.instantiate()
 	damageLabel.position = selection.position
 	var damage := int(max((Data.atk - selection.DEF / 5.) * intensity, 0))

@@ -367,6 +367,8 @@ _data = {
 
 [node name="Papyrus" type="Node2D"]
 script = ExtResource("6")
+NAME = null
+spareable = null
 
 [node name="Sprite2D" type="Node2D" parent="."]
 scale = Vector2(2, 2)

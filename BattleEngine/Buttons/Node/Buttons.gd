@@ -17,7 +17,7 @@ func enable(_soul):
 	select.connect(disable) # connect("select", Callable(self, "disable"))
 	self.enabled = true
 
-func _process(delta):
+func _process(_delta):
 	if enabled:
 		input = int(Input.is_action_just_pressed("ui_right")) - int(Input.is_action_just_pressed("ui_left"))
 		

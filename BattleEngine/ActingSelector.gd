@@ -20,7 +20,7 @@ func enable(_soul):
 	await get_tree().create_timer(0.1).timeout
 	self.enabled = true
 
-func _process(delta):
+func _process(_delta):
 	if enabled:
 		input.x = int(Input.is_action_just_pressed("ui_right")) - int(Input.is_action_just_pressed("ui_left"))
 		input.y = (int(Input.is_action_just_pressed("ui_down")) - int(Input.is_action_just_pressed("ui_up"))) * 2

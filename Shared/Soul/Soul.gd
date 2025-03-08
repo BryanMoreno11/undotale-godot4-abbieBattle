@@ -4,9 +4,9 @@ extends CharacterBody2D
 
 @export var currentFunction: String # (String, "", "red", "blue")
 
-var speed = 190
+var speed := 170
 var motion := Vector2.ZERO
-var gravity = 6 * 60
+var gravity := 6 * 60
 
 var jump = Vector2(40, 240)
 

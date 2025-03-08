@@ -23,7 +23,7 @@ func enable(_soul, _blitter):
 	self.soul = _soul
 	
 	list = rows(Data.items)
-	blitter.feed([string(), null, null, true]) # ether: should this be blitter or _blitter?
+	blitter.feed(string(), false) # ether: should this be blitter or _blitter?
 	
 	select.connect(disable) # connect("select", Callable(self, "disable"))
 	await get_tree().create_timer(0.1).timeout
@@ -95,7 +95,7 @@ func _process(_delta):
 			get_parent().get_node("Squeak").play()
 			if page_old != page:
 				page_old = page
-				blitter.feed([string(), null, null, true])
+				blitter.feed(string(), false)
 		
 		if input.y and list[int(!second_row)].size() > selection:
 			second_row = !second_row
