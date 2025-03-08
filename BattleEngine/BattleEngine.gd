@@ -29,9 +29,8 @@ func playersTurn(reset_line = true):
 	if reset_line:
 		blitter.feed("* You feel puzzled.")
 	buttons.enable(soul)
-	await buttons.select
+	function = await buttons.select
 	buttons.turn_off()
-	function = buttons.get_selection()
 	target()
 
 func target():
@@ -41,7 +40,7 @@ func target():
 		await fightManager.select
 		selection = fightManager.get_selection()
 	
-	if fightManager.enabled:
+	if fightManager.enabled: # if action is cancelled
 		fightManager.enabled = false
 		playersTurn()
 		return
@@ -87,16 +86,16 @@ func target():
 			var selectionIndex = await itemSelector.select
 			if selectionIndex < 0:
 				playersTurn()
-			else:
-				soul.visible = false
-				var item = Data.items[selectionIndex] as Item
-				add_child(item)
-				var text = item.use()
-				blitter.feed("* " + text, false)
-				await blitter.next
-				item.queue_free()
-				Data.items.remove_at(selectionIndex)
-				enemysTurn()
+				return
+			soul.visible = false
+			var item = Data.items[selectionIndex] as Item
+			Data.items.remove_at(selectionIndex)
+			add_child(item)
+			var text = item.use()
+			blitter.feed("* " + text, false)
+			await blitter.next
+			item.queue_free()
+			enemysTurn()
 
 func slay(intensity: float):
 	var slice := Slice.instantiate()

@@ -63,12 +63,12 @@ func attack():
 	emit_signal("cutscene_end")
 
 func box_adopts(node, from = self, reverse = false):
-	if reverse and box.has_node("Soul"):
+	if reverse and !from.has_node("Soul"):
 		var node_pos = node.global_position 
 		box.remove_child(node)
 		from.add_child(node)
 		node.global_position = node_pos
-	elif !box.has_node("Soul"):
+	elif !reverse and !box.has_node("Soul"):
 		var node_pos = node.global_position 
 		from.remove_child(node)
 		box.add_child(node)

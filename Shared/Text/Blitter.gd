@@ -53,7 +53,7 @@ func feed(_dataText = "", _animated = true, _pause = 0.035, _longPausesIndexes =
 		visible_characters = len(dataText)
 		ongoing = false
 		return
-
+	
 	nextChar()
 
 func nextChar():

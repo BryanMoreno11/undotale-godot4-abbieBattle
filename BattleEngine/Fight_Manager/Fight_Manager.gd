@@ -21,7 +21,7 @@ func cutscene(_arg): # to be overloaded
 	pass
 
 func _ready():
-	cutscene_end.connect(get_selection) # connect("cutscene_end", Callable(self, "selection"))
+	cutscene_end.connect(get_selection)
 	for child in get_children():
 		if !child.spared:
 			children.append(child)

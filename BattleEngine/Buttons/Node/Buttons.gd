@@ -10,7 +10,7 @@ var soul
 
 @onready var children = self.get_children()
 
-signal select
+signal select(selection: String)
 
 func enable(_soul):
 	self.soul = _soul
@@ -32,15 +32,12 @@ func _process(_delta):
 		
 		if Input.is_action_just_pressed("ui_accept"):
 			get_parent().get_node("Select").play()
-			emit_signal("select")
+			select.emit(children[selection].name)
 
-func disable():
+func disable(_selection: String):
 	self.enabled = false
 	select.disconnect(disable) # disconnect("select", Callable(self, "disable"))
 
 func turn_off():
 	for child in get_children():
 		child.frame = 0
-
-func get_selection(): # was "selection
-	return children[selection].name
