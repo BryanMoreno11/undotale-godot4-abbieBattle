@@ -46,4 +46,3 @@ func move(newpos: Vector2, time = 1.0):
 
 func add_attack(node):
 	attacks.add_child(node)
-	print(node.global_position)

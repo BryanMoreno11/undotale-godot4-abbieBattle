@@ -51,25 +51,24 @@ func attack():
 		bone.global_position = box.global_position + Vector2(-30, box.size.y - 16)
 		bone.visual.size.y = 30
 		await get_tree().create_timer(1).timeout
-		if box.has_node("Soul"):
-			box_adopts(soul, get_parent(), true)
+		box_adopts(soul, get_parent(), true)
 		box.resize(Vector2(box.size.x - 100, 140), null, 0, 1)
 	
-	await get_tree().create_timer(4).timeout
-	
+	await get_tree().create_timer(1).timeout
 	box_adopts(soul, get_parent(), true)
+
 	for child in box.attacks.get_children():
 		child.queue_free()
 	box.resize(Vector2(575,140), Vector2(32,250), 1, 1, 0.8)
 	emit_signal("cutscene_end")
 
 func box_adopts(node, from = self, reverse = false):
-	if reverse:
+	if reverse and box.has_node("Soul"):
 		var node_pos = node.global_position 
 		box.remove_child(node)
 		from.add_child(node)
 		node.global_position = node_pos
-	else:
+	elif !box.has_node("Soul"):
 		var node_pos = node.global_position 
 		from.remove_child(node)
 		box.add_child(node)

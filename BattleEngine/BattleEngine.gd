@@ -58,8 +58,6 @@ func target():
 			blitter.feed()
 			
 			add_child(attacker)
-			
-			print(attacker.rotation)
 		"Act":
 			actingSelector.list = selection.actings
 			blitter.feed(actingSelector.string(), false)
