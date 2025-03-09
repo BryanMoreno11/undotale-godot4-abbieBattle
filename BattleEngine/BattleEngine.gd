@@ -4,7 +4,7 @@ extends Node2D
 @onready var Slice := preload("res://BattleEngine/Weapon/Weapon.tscn")
 @onready var Damage := preload("res://BattleEngine/DamageMeter/Text/Damage.tscn")
 
-@onready var box := $Box
+@onready var box: GameCombatBox = $Box
 @onready var global_attacks := $Attacks
 @onready var attacks := $Box/Attacks
 @onready var blitter := $Box/Blitter
@@ -113,11 +113,14 @@ func slay(intensity: float):
 func enemysTurn():
 	soul.visible = true
 	blitter.feed()
+	
 	fightManager.cutscene(box)
 	await fightManager.cutscene_end
-	
 	fightManager.attack()
 	await fightManager.cutscene_end
+	
+	box.resize(Vector2(575,140), Vector2(33,250), 1, 1, 0.8)
+	await get_tree().create_timer(0.8).timeout
 	
 	soul.changeMovement("")
 	playersTurn()

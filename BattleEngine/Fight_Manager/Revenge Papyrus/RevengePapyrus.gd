@@ -41,7 +41,7 @@ func attack():
 		bone.visual.size.y = 30
 		await get_tree().create_timer(1).timeout
 	
-	box.resize(Vector2(575,140), Vector2(32,250), 1, 1, 0.8)
+	box.resize(Vector2(575,140), Vector2(33,250), 1, 1, 0.8)
 
 	for i in range(5):
 		var bone = bone_tscn.instantiate()
@@ -59,7 +59,6 @@ func attack():
 
 	for child in box.attacks.get_children():
 		child.queue_free()
-	box.resize(Vector2(575,140), Vector2(32,250), 1, 1, 0.8)
 	emit_signal("cutscene_end")
 
 func box_adopts(node, from = self, reverse = false):

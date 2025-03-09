@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddahfs3p8gwj7"]
+[gd_scene load_steps=27 format=3 uid="uid://ddahfs3p8gwj7"]
 
 [ext_resource type="Script" uid="uid://fsbt25gjknil" path="res://BattleEngine/BattleEngine.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dupa1ccsl1fq0" path="res://BattleEngine/Buttons/spr_fight1.png" id="2"]
@@ -79,15 +79,6 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="FontFile" id="7"]
-fallbacks = Array[Font]([ExtResource("12")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
 [node name="BattleEngine" type="Node2D"]
 script = ExtResource("1")
 
@@ -101,9 +92,9 @@ NAME = "Monster"
 spareable = true
 
 [node name="Box" parent="." instance=ExtResource("11")]
-offset_left = 32.0
+offset_left = 33.0
 offset_top = 250.0
-offset_right = 607.0
+offset_right = 608.0
 offset_bottom = 390.0
 border = 7
 
@@ -128,17 +119,23 @@ sprite_frames = SubResource("3")
 position = Vector2(556, 453)
 sprite_frames = SubResource("4")
 
-[node name="HUD" type="HBoxContainer" parent="."]
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 33.3271
+offset_left = 31.3271
 offset_top = 399.673
-offset_right = 608.327
+offset_right = 606.327
 offset_bottom = 420.673
 grow_horizontal = 2
 script = ExtResource("14_lxmmi")
 
-[node name="Name" type="RichTextLabel" parent="HUD"]
+[node name="Left" type="HBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_right = 213.0
+offset_bottom = 21.0
+
+[node name="Name" type="RichTextLabel" parent="HUD/Left"]
 custom_minimum_size = Vector2(113, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.7
@@ -146,19 +143,33 @@ theme = ExtResource("14_00jd2")
 text = "PAPYRU"
 scroll_active = false
 
-[node name="LV" type="RichTextLabel" parent="HUD"]
+[node name="LVText" type="RichTextLabel" parent="HUD/Left"]
 clip_contents = false
-custom_minimum_size = Vector2(93, 0)
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.54
 theme = ExtResource("14_00jd2")
-text = "LV 19"
+text = "LV "
 scroll_active = false
 
-[node name="HPText" type="CenterContainer" parent="HUD"]
+[node name="LV" type="RichTextLabel" parent="HUD/Left"]
+clip_contents = false
+custom_minimum_size = Vector2(57, 0)
+layout_mode = 2
+theme = ExtResource("14_00jd2")
+text = "19"
+scroll_active = false
+
+[node name="Middle" type="HBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 214.0
+offset_right = 449.0
+offset_bottom = 21.0
+
+[node name="HPText" type="CenterContainer" parent="HUD/Middle"]
 layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="HUD/HPText"]
+[node name="Text" type="RichTextLabel" parent="HUD/Middle/HPText"]
 custom_minimum_size = Vector2(27, 10)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("12")
@@ -166,7 +177,7 @@ theme_override_font_sizes/normal_font_size = 10
 text = "hp"
 scroll_active = false
 
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+[node name="ProgressBar" type="ProgressBar" parent="HUD/Middle"]
 custom_minimum_size = Vector2(100, 21)
 layout_mode = 2
 theme = ExtResource("14_00jd2")
@@ -175,40 +186,34 @@ step = 1.0
 value = 92.0
 show_percentage = false
 
-[node name="KRText" type="CenterContainer" parent="HUD"]
-visible = false
+[node name="space" type="Control" parent="HUD/Middle"]
+custom_minimum_size = Vector2(6, 0)
 layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="HUD/KRText"]
-custom_minimum_size = Vector2(31, 10)
-layout_mode = 2
-theme_override_fonts/normal_font = SubResource("7")
-text = " kr"
-scroll_active = false
-
-[node name="HP" type="CenterContainer" parent="HUD"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/HP"]
-layout_mode = 2
-
-[node name="CurrentHP" type="RichTextLabel" parent="HUD/HP/HBoxContainer"]
-custom_minimum_size = Vector2(30, 20)
+[node name="CurrentHP" type="RichTextLabel" parent="HUD/Middle"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 theme = ExtResource("14_00jd2")
 text = "92"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="HUD/HP/HBoxContainer"]
-custom_minimum_size = Vector2(15, 20)
+[node name="space2" type="Control" parent="HUD/Middle"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+
+[node name="Slash" type="RichTextLabel" parent="HUD/Middle"]
+custom_minimum_size = Vector2(14, 0)
 layout_mode = 2
 theme = ExtResource("14_00jd2")
 text = "/"
 scroll_active = false
 
-[node name="MaxHP" type="RichTextLabel" parent="HUD/HP/HBoxContainer"]
-custom_minimum_size = Vector2(30, 20)
+[node name="space3" type="Control" parent="HUD/Middle"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="MaxHP" type="RichTextLabel" parent="HUD/Middle"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.79
 theme = ExtResource("14_00jd2")

@@ -1,4 +1,4 @@
-extends Control
+class_name GameCombatBox extends Control
 
 @export var border = 5
 

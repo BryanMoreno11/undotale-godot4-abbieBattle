@@ -5,7 +5,8 @@ var selection = 0
 
 var enabled = false
 
-var positionArray = [[Vector2(80, 285), Vector2(320, 285)], [Vector2(80, 315), Vector2(320, 315)]]
+var positionArray = [[Vector2(73, 286), Vector2(321, 286)],
+					[Vector2(73, 318), Vector2(321, 318)]]
 var soul
 var blitter
 
@@ -43,19 +44,19 @@ func string():
 	var lines = 0
 	
 	for index in range(both.size()):
-		var option = both[index].item_name
+		var option = both[index].inventory_name
 		if index % 2 == 1:
-			for spaces in range(14 - len(both[index - 1].item_name)):
+			for spaces in range(13 - len(both[index - 1].inventory_name)):
 				_string += " "
 			_string += "* " + option + "\n"
 			lines += 1
 		else:
-			_string += "\t\t* " + option
+			_string += "   * " + option
 	
 	for line in range(2 - lines):
 		_string += "\n"
 	
-	_string += "[right]PAGE " + str(page + 1) + "[/right]"
+	_string += "[right]PAGE " + str(page + 1) + "      [/right]"
 	return _string
 
 func rows(paralist, reverse = false):

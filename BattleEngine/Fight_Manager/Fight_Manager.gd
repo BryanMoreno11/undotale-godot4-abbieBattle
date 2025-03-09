@@ -6,7 +6,7 @@ var selection = 0
 
 var enabled = false
 
-var possiblePositions := [285, 315, 350]
+var possiblePositions := [286, 318, 355]
 var positionArray := []
 @export var soul: PlayerSoul
 
@@ -34,7 +34,7 @@ func _process(_delta):
 			get_parent().get_node("Squeak").play()
 		
 		selection = (selection + input) % children.size()
-		soul.position = Vector2(80, positionArray[selection])
+		soul.position = Vector2(73, positionArray[selection])
 		
 		if Input.is_action_just_pressed("ui_accept"):
 			self.enabled = false
@@ -56,7 +56,7 @@ func disable():
 func string():
 	var _string = ""
 	for child in children:
-		var monster = "\t\t* " + child.NAME + "\n"
+		var monster = "   * " + child.NAME + "\n"
 		if child.spareable:
 			monster = "[color=yellow]" + monster + "[/color]"
 		_string += monster

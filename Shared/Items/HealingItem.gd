@@ -4,8 +4,9 @@ var hp := 5
 var healingSound := preload("res://Shared/Soul/snd_heal_c.wav")
 var audioPlayer = AudioStreamPlayer.new()
 
-func _init(_name: String, _hp: int):
+func _init(_name: String, _inventory_name: String, _hp: int):
 	item_name = _name
+	inventory_name = _inventory_name
 	hp = _hp
 	audioPlayer.stream = healingSound
 

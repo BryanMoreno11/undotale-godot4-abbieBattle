@@ -5,9 +5,9 @@ var selection = 0
 
 var enabled = false # was "enable"
 
-var positionArray = [Vector2(80,285), Vector2(320,285),
-					Vector2(80,315), Vector2(320,315),
-					Vector2(80,350), Vector2(320,350)]
+var positionArray = [Vector2(73, 286), Vector2(321, 286),
+					Vector2(73, 318), Vector2(321, 318),
+					Vector2(73, 353), Vector2(321, 353)]
 var soul
 
 var list = []
@@ -45,11 +45,11 @@ func string():
 	for index in range(list.size()):
 		var option = list[index]
 		if index % 2 == 1:
-			for spaces in range(14 - len(list[index-1])):
+			for spaces in range(14 - len(list[index - 1])):
 				_string += " "
 			_string += "* " + option + "\n"
 		else:
-			_string += "\t\t* " + option
+			_string += "   * " + option
 	return _string
 
 func disable():
