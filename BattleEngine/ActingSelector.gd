@@ -7,7 +7,7 @@ var enabled = false # was "enable"
 
 var positionArray = [Vector2(73, 286), Vector2(321, 286),
 					Vector2(73, 318), Vector2(321, 318),
-					Vector2(73, 353), Vector2(321, 353)]
+					Vector2(73, 350), Vector2(321, 350)]
 var soul
 
 var list = []

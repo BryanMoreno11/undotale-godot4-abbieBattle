@@ -14,4 +14,4 @@ func use() -> String:
 	add_child(audioPlayer)
 	Data.hp = min(Data.hp + hp, Data.maxhp)
 	audioPlayer.play()
-	return "You ate the " + item_name
+	return "You ate the " + item_name + "."

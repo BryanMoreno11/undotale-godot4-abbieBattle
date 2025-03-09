@@ -6,7 +6,7 @@ var selection = 0
 
 var enabled = false
 
-var possiblePositions := [286, 318, 355]
+var possiblePositions := [286, 318, 350]
 var positionArray := []
 @export var soul: PlayerSoul
 
