@@ -1,4 +1,10 @@
-Currently in an effort of porting this project to Godot 4. Work in progress. Feel free to contact me (in Issue page) to help.
+Complete port of undotale for Godot 4.4 with small improvements and more features like :
+- damage calculation (with defense)
+- attack damage intensity (probably bad formula)
+- hud updating (hp, level, character name ...)
+- items (healing items)
+
+
 
 ##### About the repo creator
 The creator of this repo lost interest, don't really want to work on this anymore, busy with his work. If you wish to contribute, feel free to contact me (the current fork owner). It's highly encouraged! <3
