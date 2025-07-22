@@ -19,7 +19,7 @@ var main_scene
 
 func _ready():
 	main_scene = owner
-	modulate = Color(1, 0, 0, 1)
+	modulate = Color.WEB_PURPLE
 	changeMovement(currentFunction)
 
 func _process(delta: float):
@@ -35,7 +35,7 @@ func _process(delta: float):
 		call(currentFunction, delta)
 
 func changeMovement(value: String):
-	updateColor(value)
+	#updateColor(value) No cambio el color del alma, se mantiene en morado
 	var negate = ["", "still"]
 	if !(currentFunction in negate) and !(value in negate):
 		var ghost_inst = ghost.instantiate()

@@ -1,6 +1,6 @@
 extends Node
 
-var human := "PLAYER"
+var human := "Pandora"
 var lv := 20
 var maxhp := 90
 var hp := maxhp

@@ -88,8 +88,6 @@ soul = NodePath("../Soul")
 
 [node name="Papyrus" parent="Enemies" instance=ExtResource("15")]
 position = Vector2(316.967, 123.659)
-NAME = "Monster"
-spareable = true
 
 [node name="Box" parent="." instance=ExtResource("11")]
 offset_left = 33.0
@@ -140,7 +138,7 @@ custom_minimum_size = Vector2(113, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.7
 theme = ExtResource("14_00jd2")
-text = "PAPYRU"
+text = "Pandora"
 scroll_active = false
 
 [node name="LVText" type="RichTextLabel" parent="HUD/Left"]
