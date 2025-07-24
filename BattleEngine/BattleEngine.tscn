@@ -18,10 +18,10 @@
 [ext_resource type="Script" uid="uid://clpgytibvimhy" path="res://BattleEngine/Hud.gd" id="14_lxmmi"]
 [ext_resource type="PackedScene" uid="uid://d1nh0b04xs23c" path="res://BattleEngine/Fight_Manager/Revenge Papyrus/Papyrus.tscn" id="15"]
 [ext_resource type="Script" uid="uid://j1l8oqf6dli7" path="res://BattleEngine/Buttons/Node/Buttons.gd" id="16"]
-[ext_resource type="AudioStream" uid="uid://d2qf4pqm1oufh" path="res://BattleEngine/Music/SWRevenge_-_MEGALOVANIA.mp3" id="17"]
 [ext_resource type="AudioStream" uid="uid://c5vb3l77c2i6f" path="res://BattleEngine/Buttons/Sounds/snd_squeak.wav" id="18"]
 [ext_resource type="AudioStream" uid="uid://b8p6hbq5k4sns" path="res://BattleEngine/Buttons/Sounds/snd_select.wav" id="19"]
 [ext_resource type="Script" uid="uid://jqrek6gd8uyh" path="res://BattleEngine/ItemSelector.gd" id="20"]
+[ext_resource type="AudioStream" uid="uid://dx1o3olmx5804" path="res://BattleEngine/Music/04. Although the Sky.mp3" id="22_lxmmi"]
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
@@ -234,7 +234,7 @@ script = ExtResource("13")
 script = ExtResource("20")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17")
+stream = ExtResource("22_lxmmi")
 volume_db = -10.0
 autoplay = true
 

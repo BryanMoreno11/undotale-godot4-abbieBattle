@@ -22,12 +22,12 @@ signal shake_camera
 
 func _ready():
 	shake_camera.connect(_on_shake_camera)
-	$Music.play(10)
+	$Music.play()
 	playersTurn()
 
 func playersTurn(reset_line = true):
 	if reset_line:
-		blitter.feed("* You feel puzzled.")
+		blitter.feed("* You'll  see it, see it shinin")
 	buttons.enable(soul)
 	function = await buttons.select
 	buttons.turn_off()
@@ -69,7 +69,8 @@ func target():
 				return
 			
 			soul.visible = false
-			var actString = selection.actingSelector(actingSelector.selection)
+			print("selection es ", selection)
+			var actString = selection.acting(actingSelector.selection)
 			blitter.feed("* " + actString)
 			await blitter.next
 			soul.visible = true

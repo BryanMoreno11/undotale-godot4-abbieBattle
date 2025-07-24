@@ -29,15 +29,19 @@ func _process(_delta):
 		children[selection].frame = 1
 		
 		soul.position = Vector2(positionArray[selection], 453)
-		
+		print("xd")
 		if Input.is_action_just_pressed("ui_accept"):
+			print("acept button")
 			get_parent().get_node("Select").play()
 			select.emit(children[selection].name)
+			print("el children selection es ", children[selection].name)
 
 func disable(_selection: String):
 	self.enabled = false
 	select.disconnect(disable) # disconnect("select", Callable(self, "disable"))
+	pass
 
 func turn_off():
 	for child in get_children():
+		await get_tree().create_timer(0.1).timeout
 		child.frame = 0

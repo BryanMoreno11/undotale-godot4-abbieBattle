@@ -20,9 +20,6 @@ texture = ExtResource("1")
 region_rect = Rect2(0, 0, 13, 11)
 patch_margin_top = 5
 patch_margin_bottom = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.5, 0)

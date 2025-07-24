@@ -63,6 +63,7 @@ texture = ExtResource("3")
 [node name="Bar" type="AnimatedSprite2D" parent="."]
 position = Vector2(-280, 0)
 sprite_frames = SubResource("1")
+frame_progress = 0.699821
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

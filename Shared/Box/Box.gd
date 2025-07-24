@@ -24,6 +24,7 @@ func resize(dimension: Vector2, newpos = null, top = 1, bot = 1, time = 1.5):
 
 	match top:
 		0:
+			print("a")
 			pass
 		1:
 			tween.tween_property(self, "position:y", self.position.y + ((size.y - dimension.y) / 2.0), time)
