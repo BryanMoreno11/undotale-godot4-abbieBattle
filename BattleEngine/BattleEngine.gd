@@ -112,6 +112,7 @@ func slay(intensity: float):
 	add_child(damageLabel)
 
 func enemysTurn():
+	print(fightManager.get_path())
 	soul.visible = true
 	blitter.feed()
 	
