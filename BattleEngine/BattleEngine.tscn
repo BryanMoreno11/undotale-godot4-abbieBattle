@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddahfs3p8gwj7"]
+[gd_scene load_steps=28 format=3 uid="uid://ddahfs3p8gwj7"]
 
 [ext_resource type="Script" uid="uid://fsbt25gjknil" path="res://BattleEngine/BattleEngine.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dupa1ccsl1fq0" path="res://BattleEngine/Buttons/spr_fight1.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dth1yvemey15b" path="res://BattleEngine/Buttons/spr_mercy1.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cwmsu7ekgpy7q" path="res://BattleEngine/Buttons/spr_mercy0.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://d00yyxwai3ivp" path="res://BattleEngine/Fight_Manager/Abbie/Abbie.tscn" id="4_y2ppc"]
 [ext_resource type="Texture2D" uid="uid://by0y66rxjvvhc" path="res://BattleEngine/Buttons/spr_item1.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://df0awtjuo8wkh" path="res://BattleEngine/Buttons/spr_item0.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dq1jc8gj6t6ny" path="res://BattleEngine/Buttons/spr_fight0.png" id="7"]
@@ -87,6 +88,10 @@ script = ExtResource("10")
 soul = NodePath("../Soul")
 
 [node name="Papyrus" parent="Enemies" instance=ExtResource("15")]
+visible = false
+position = Vector2(316.967, 123.659)
+
+[node name="Abbie" parent="Enemies" instance=ExtResource("4_y2ppc")]
 position = Vector2(316.967, 123.659)
 
 [node name="Box" parent="." instance=ExtResource("11")]

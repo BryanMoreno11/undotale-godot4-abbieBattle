@@ -45,8 +45,8 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mft1l"]
 shader = ExtResource("18")
-shader_parameter/topleft = Vector2(-1.10244, 0)
-shader_parameter/topright = Vector2(-2.67571, 0)
+shader_parameter/topleft = Vector2(0, 0)
+shader_parameter/topright = Vector2(0, 0)
 shader_parameter/bottomleft = Vector2(0, 0)
 shader_parameter/bottomright = Vector2(0, 0)
 
@@ -372,19 +372,19 @@ script = ExtResource("6")
 scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(22.7324, -15.1955)
+position = Vector2(31.8791, -14.9433)
 sprite_frames = SubResource("1")
 autoplay = "default"
 frame_progress = 0.313168
 
 [node name="left" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-28.3163, -2.90049)
-rotation = 0.0407528
+position = Vector2(-20.949, -4)
+rotation = 0.0523599
 texture = ExtResource("17")
 offset = Vector2(5, 10)
 
 [node name="Bust" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-5.78466, 2.7199)
+position = Vector2(2, 2.5)
 texture = ExtResource("14")
 
 [node name="Legs" type="AnimatedSprite2D" parent="Sprite2D"]
@@ -392,15 +392,16 @@ material = SubResource("ShaderMaterial_mft1l")
 position = Vector2(1.14057, 40.2599)
 rotation = -0.00890005
 sprite_frames = SubResource("3")
+frame = 1
 
 [node name="right" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(13.5998, -6.1204)
-rotation = -0.0584889
+position = Vector2(18.276, -7)
+rotation = -0.0230113
 texture = ExtResource("15")
 offset = Vector2(7, 19)
 
 [node name="head_0" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-5.33538, -8.68059)
+position = Vector2(1.057, -10)
 texture = ExtResource("16")
 offset = Vector2(0, -15)
 
