@@ -29,7 +29,6 @@ func _process(_delta):
 		children[selection].frame = 1
 		
 		soul.position = Vector2(positionArray[selection], 453)
-		print("xd")
 		if Input.is_action_just_pressed("ui_accept"):
 			print("acept button")
 			get_parent().get_node("Select").play()

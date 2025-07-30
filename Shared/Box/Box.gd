@@ -11,6 +11,7 @@ func _ready():
 
 func _process(_delta):
 	update_size()
+	pass
 
 func update_size():
 	shapes.get_child(0).position.x = -100 + border

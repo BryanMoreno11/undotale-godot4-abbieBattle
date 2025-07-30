@@ -1,7 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://d00yyxwai3ivp"]
+[gd_scene load_steps=13 format=3 uid="uid://d00yyxwai3ivp"]
 
 [ext_resource type="Script" uid="uid://di6q23qlgqibu" path="res://BattleEngine/Fight_Manager/Abbie/abbie.gd" id="1_bsljg"]
 [ext_resource type="Texture2D" uid="uid://dmdqesgmbnpkn" path="res://BattleEngine/Fight_Manager/Abbie/Abbie.png" id="2_6qw65"]
+[ext_resource type="Texture2D" uid="uid://mcs1w54tk5n6" path="res://BattleEngine/Bubble/bubble_1.png" id="3_21q0t"]
+[ext_resource type="Texture2D" uid="uid://caiu1ju5gpmeq" path="res://BattleEngine/Bubble/bubble_2.png" id="4_qucbh"]
+[ext_resource type="Texture2D" uid="uid://dv3lwvvg4d7x" path="res://BattleEngine/Bubble/bubble_3.png" id="5_15x1w"]
+[ext_resource type="Texture2D" uid="uid://b4g5iq71aofi1" path="res://BattleEngine/Bubble/bubble_4.png" id="6_4sqyb"]
+[ext_resource type="Texture2D" uid="uid://dq5ojbyjnak0x" path="res://BattleEngine/Bubble/bubble_5.png" id="7_ocga5"]
+[ext_resource type="Texture2D" uid="uid://dpfv54kevyqty" path="res://BattleEngine/Bubble/bubble_6.png" id="8_5jwll"]
+[ext_resource type="Texture2D" uid="uid://humgvq1atkoc" path="res://BattleEngine/Bubble/bubble_7.png" id="9_uyvlv"]
+[ext_resource type="Texture2D" uid="uid://csifcpkq6mb6r" path="res://BattleEngine/Bubble/bubble_8.png" id="10_cke3y"]
+[ext_resource type="PackedScene" uid="uid://c7svy1p6ymvmd" path="res://Shared/Text/Blitter.tscn" id="11_yvva2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66m8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_21q0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qucbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_15x1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4sqyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ocga5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5jwll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uyvlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cke3y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Abbie" type="Node2D"]
 script = ExtResource("1_bsljg")
@@ -10,3 +51,23 @@ metadata/_custom_type_script = "uid://6m1j7j0b1mpy"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("2_6qw65")
+
+[node name="Bubble" type="Node2D" parent="."]
+visible = false
+position = Vector2(-11, -72)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bubble"]
+position = Vector2(179, -3.64815)
+scale = Vector2(0.824034, 0.852963)
+sprite_frames = SubResource("SpriteFrames_66m8t")
+frame = 2
+
+[node name="Blitter" parent="Bubble" instance=ExtResource("11_yvva2")]
+modulate = Color(0, 0, 0, 1)
+offset_left = 108.0
+offset_top = -41.0
+offset_right = 272.0
+offset_bottom = 34.0
+theme_override_font_sizes/normal_font_size = 16
+text = "Hi, I'am Abby"
+skippable = true

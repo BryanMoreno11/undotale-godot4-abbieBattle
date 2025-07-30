@@ -406,13 +406,11 @@ texture = ExtResource("16")
 offset = Vector2(0, -15)
 
 [node name="Bubble" type="Node2D" parent="."]
-visible = false
 position = Vector2(81.2574, 51.8275)
 
 [node name="Options" type="AnimatedSprite2D" parent="Bubble"]
 position = Vector2(94.8332, -42.1519)
 sprite_frames = SubResource("4")
-frame = 2
 
 [node name="Blitter" parent="Bubble" instance=ExtResource("7")]
 modulate = Color(0, 0, 0, 1)

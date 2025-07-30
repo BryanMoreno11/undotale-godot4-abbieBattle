@@ -65,7 +65,6 @@ skippable = true
 [node name="Attacks" type="Node2D" parent="."]
 
 [node name="Collisions" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 4
 
 [node name="Left" type="CollisionShape2D" parent="Collisions"]

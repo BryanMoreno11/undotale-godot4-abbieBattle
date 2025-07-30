@@ -25,6 +25,7 @@ func _ready():
 	for child in get_children():
 		if !child.spared:
 			children.append(child)
+		print("el hijo es ", child)
 
 func _process(_delta):
 	if enabled:
