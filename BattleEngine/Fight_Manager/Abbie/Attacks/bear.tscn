@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqrwqcovwh8ao"]
+
+[ext_resource type="Script" uid="uid://dk4ksherasw5f" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear.gd" id="1_vos5b"]
+[ext_resource type="Texture2D" uid="uid://ck6kklluyecvh" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear.png" id="2_cmsb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmsb2"]
+size = Vector2(32, 45)
+
+[node name="Bear" type="CharacterBody2D" groups=["damage"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_vos5b")
+
+[node name="Bear" type="Sprite2D" parent="."]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_cmsb2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cmsb2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.38419e-07, 2.25)
+scale = Vector2(1.6, 2.525)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
