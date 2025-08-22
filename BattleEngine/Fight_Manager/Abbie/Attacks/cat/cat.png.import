@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck6kklluyecvh"
-path="res://.godot/imported/bear.png-2d3f20a9caaf8d12f9351204d806dece.ctex"
+uid="uid://c6k54ufuqhvux"
+path="res://.godot/imported/cat.png-574bea7c97fa534c8d080dddb17a695d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear.png"
-dest_files=["res://.godot/imported/bear.png-2d3f20a9caaf8d12f9351204d806dece.ctex"]
+source_file="res://BattleEngine/Fight_Manager/Abbie/Attacks/cat/cat.png"
+dest_files=["res://.godot/imported/cat.png-574bea7c97fa534c8d080dddb17a695d.ctex"]
 
 [params]
 

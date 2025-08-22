@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqrwqcovwh8ao"]
 
-[ext_resource type="Script" uid="uid://dk4ksherasw5f" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear.gd" id="1_vos5b"]
-[ext_resource type="Texture2D" uid="uid://ck6kklluyecvh" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear.png" id="2_cmsb2"]
+[ext_resource type="Script" uid="uid://dk4ksherasw5f" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear/bear.gd" id="1_jha74"]
+[ext_resource type="Texture2D" uid="uid://ck6kklluyecvh" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/bear/bear.png" id="2_q6nx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmsb2"]
 size = Vector2(32, 45)
@@ -10,11 +10,11 @@ size = Vector2(32, 45)
 z_index = 1
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_vos5b")
+script = ExtResource("1_jha74")
 
 [node name="Bear" type="Sprite2D" parent="."]
 scale = Vector2(0.07, 0.07)
-texture = ExtResource("2_cmsb2")
+texture = ExtResource("2_q6nx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

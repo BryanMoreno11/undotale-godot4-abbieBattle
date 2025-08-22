@@ -1,10 +1,9 @@
 extends Fight_Manager
 
 # MAKE CUSTOM CUTSCENES AS YOU WISH
-
 @onready var bone_tscn = preload("res://BattleEngine/Fight_Manager/Revenge Papyrus/Attacks/Bone.tscn")
-@onready var bear_tscn = preload("res://BattleEngine/Fight_Manager/Abbie/Attacks/bear.tscn")
-
+@onready var bear_tscn = preload("res://BattleEngine/Fight_Manager/Abbie/Attacks/bear/bear.tscn")
+@onready var cat_tscn= preload("res://BattleEngine/Fight_Manager/Abbie/Attacks/cat/cat.tscn")
 
 var cutscene_counter = 0
 var box
@@ -52,44 +51,22 @@ func attack():
 		var direction= (soul.global_position-bear.global_position).normalized()
 		var sped=250
 		bear.motion=direction*sped
-			
-		#bear.position.x=initialPositionBear+(initialPositionBear*randf_range(1,6))
-		#bear.position.y=50
-		#bear.global_position= Vector2(xPosition, box.size.y-100)
-		
-		#var bone = bone_tscn.instantiate()
-		#bone.motion = Vector2(100,0)
-		#bone.switch_from("bot")
-		#box.attacks.add_child(bone)
-		#bone.global_position = box.global_position + Vector2(-30, box.size.y - 16)
-		#bone.visual.size.y = 30
-		
-	#soul.changeMovement("blue")
-	#box_adopts(soul, get_parent())
-	#box.move(Vector2.ZERO)
-	#for i in range(3):
-		#var bone = bone_tscn.instantiate()
-		#bone.motion = Vector2(100,0)
-		#bone.switch_from("bot")
-		#box.attacks.add_child(bone)
-		#bone.global_position = box.global_position + Vector2(-30, box.size.y -16)
-		#bone.visual.size.y = 30
-		#await get_tree().create_timer(1).timeout
-	#
-	#box.resize(Vector2(575,140), Vector2(33,250), 1, 1, 0.8)
-#
-	#for i in range(5):
-		#var bone = bone_tscn.instantiate()
-		#bone.motion = Vector2(100,0)
-		#bone.switch_from("bot")
-		#box.attacks.add_child(bone)
-		#bone.global_position = box.global_position + Vector2(-30, box.size.y - 16)
-		#bone.visual.size.y = 30
-		#await get_tree().create_timer(1).timeout
-		#box_adopts(soul, get_parent(), true)
-		#box.resize(Vector2(box.size.x - 100, 140), null, 0, 1)
-	
-	await get_tree().create_timer(1).timeout
+	#Third Pattern
+	var time=0.0
+	var amplitude=200.0
+	var speed=-250
+	await get_tree().create_timer(2).timeout
+	var cat= cat_tscn.instantiate()
+	box.attacks.add_child(cat)
+	cat.global_position= box.global_position+Vector2(box.size.x+70,box.size.y/2 - amplitude/2)
+	while cat:
+		time+= get_process_delta_time()
+		var y_movement= amplitude*sin(time*3.0)
+		print("El y movement es ", y_movement)
+		cat.motion= Vector2(speed,y_movement)
+		await get_tree().process_frame
+
+	await get_tree().create_timer(5).timeout
 	box_adopts(soul, get_parent(), true)
 
 	for child in box.attacks.get_children():
