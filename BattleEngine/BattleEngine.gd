@@ -15,8 +15,10 @@ extends Node2D
 @onready var actingSelector := $ActingSelector
 @onready var itemSelector := $ItemSelector
 
+#Variables
 var selection
 var function
+var COUNTER_TURN=1
 
 signal shake_camera
 
@@ -118,7 +120,18 @@ func enemysTurn():
 	
 	fightManager.cutscene(box)
 	await fightManager.cutscene_end
-	fightManager.attack()
+	match COUNTER_TURN:
+		1:
+			fightManager.attack()
+			COUNTER_TURN+=1
+		2:
+			fightManager.attack2()
+			COUNTER_TURN+=1
+		_:
+			COUNTER_TURN=1
+			fightManager.attack()
+			COUNTER_TURN+=1
+	
 	await fightManager.cutscene_end
 	
 	box.resize(Vector2(575,140), Vector2(33,250), 1, 1, 0.8)

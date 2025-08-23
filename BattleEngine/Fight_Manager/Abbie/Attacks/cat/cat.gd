@@ -6,7 +6,7 @@ var from = ""
 var motion = Vector2(0,0)
 var save_size = 11
 var save_position = 0
-@onready var visual=$Cat
+@onready var visual=$CatSprite
 
 func _ready() -> void:
 	pass

@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://c6k54ufuqhvux" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/cat/cat.png" id="1_drqs4"]
 [ext_resource type="Script" uid="uid://cqbalgdxsjgg1" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/cat/cat.gd" id="1_lgbqe"]
 
-[node name="Cat" type="CharacterBody2D"]
+[node name="Cat" type="CharacterBody2D" groups=["damageNotDisappear"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_lgbqe")
 
-[node name="Cat" type="Sprite2D" parent="."]
+[node name="CatSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("1_drqs4")
 
