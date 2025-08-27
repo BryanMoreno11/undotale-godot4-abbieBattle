@@ -79,7 +79,6 @@ func blue(delta: float):
 	move_and_slide()
 
 func _on_body_entered(body):
-	print("El grupo del body que entro es", body.get_groups())
 	if body.is_in_group("damage"):
 		hit(body.damage)
 		body.queue_free()

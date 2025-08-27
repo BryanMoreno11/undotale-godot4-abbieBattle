@@ -18,7 +18,7 @@ extends Node2D
 #Variables
 var selection
 var function
-var COUNTER_TURN=1
+var COUNTER_TURN=3
 
 signal shake_camera
 
@@ -127,6 +127,8 @@ func enemysTurn():
 		2:
 			fightManager.attack2()
 			COUNTER_TURN+=1
+		3:
+			fightManager.attack3()
 		_:
 			COUNTER_TURN=1
 			fightManager.attack()

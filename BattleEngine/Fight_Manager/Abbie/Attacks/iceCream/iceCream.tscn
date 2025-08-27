@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://whlhlj7id8at"]
+
+[ext_resource type="Script" uid="uid://b45g2d3x5w5mg" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/iceCream/ice_cream.gd" id="1_daghw"]
+[ext_resource type="Texture2D" uid="uid://brniv76nhtw53" path="res://BattleEngine/Fight_Manager/Abbie/Attacks/iceCream/iceCream.png" id="1_jjy83"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjy83"]
+size = Vector2(19, 29)
+
+[node name="iceCream" type="CharacterBody2D" groups=["damageNotDisappear"]]
+collision_layer = 6
+collision_mask = 0
+script = ExtResource("1_daghw")
+
+[node name="iceCreamSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_jjy83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_jjy83")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, -7.75002)
+scale = Vector2(8.35, 11.725)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

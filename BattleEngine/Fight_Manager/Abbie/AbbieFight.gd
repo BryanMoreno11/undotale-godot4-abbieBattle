@@ -4,7 +4,7 @@ extends Fight_Manager
 @onready var bone_tscn = preload("res://BattleEngine/Fight_Manager/Revenge Papyrus/Attacks/Bone.tscn")
 @onready var bear_tscn = preload("res://BattleEngine/Fight_Manager/Abbie/Attacks/bear/bear.tscn")
 @onready var cat_tscn= preload("res://BattleEngine/Fight_Manager/Abbie/Attacks/cat/cat.tscn")
-
+@onready var icreCream_tsc=preload("res://BattleEngine/Fight_Manager/Abbie/Attacks/iceCream/iceCream.tscn")
 var cutscene_counter = 0
 var box
 
@@ -87,7 +87,42 @@ func attack2():
 	for child in box.attacks.get_children():
 		child.queue_free()
 	emit_signal("cutscene_end")
-	
+
+func attack3():
+	soul.changeMovement("red")
+	var radius=60
+	var numberIceCreams=8.0
+	var iceCreams=[]
+	var speed=90
+	var directions=[
+		Vector2(speed,0),
+		Vector2(-speed,0),
+		Vector2(0,speed),
+		Vector2(0,-speed),
+		Vector2(speed,-speed),
+		Vector2(speed,speed),
+		Vector2(-speed,-speed),
+		Vector2(-speed,speed)
+	]
+	var direction= directions[randi_range(0, len(directions)-1)]  
+	var playerPositionX= soul.global_position.x
+	var playerPositionY= soul.global_position.y
+	for i in numberIceCreams:
+		var angle= (i/numberIceCreams)*2*PI
+		var iceCream= icreCream_tsc.instantiate()
+		box.attacks.add_child(iceCream)
+		iceCream.global_position.x= (radius*cos(angle))+playerPositionX
+		iceCream.global_position.y=(radius*sin(angle)+playerPositionY)
+		iceCreams.append(iceCream)
+	await get_tree().create_timer(0.25).timeout
+	for iceCream in iceCreams:
+		iceCream.motion=direction
+	await get_tree().create_timer(1).timeout
+	box_adopts(soul, get_parent(), true)
+
+	for child in box.attacks.get_children():
+		child.queue_free()
+	emit_signal("cutscene_end")
 	
 func box_adopts(node, from = self, reverse = false):
 	if reverse and !from.has_node("Soul"):
